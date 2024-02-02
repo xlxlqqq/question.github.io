@@ -7,25 +7,87 @@
 </head>
 <body>
 
-<h1>Answer the Question to Get the Password</h1>
+<h1>Answer the Questions to Get the Passwords</h1>
 
-<form id="questionForm">
-    <label for="answer">What is the capital of France?</label>
-    <input type="text" id="answer" required>
-    <button type="button" onclick="checkAnswer()">Submit</button>
+<form id="questionsForm">
+    <div>
+        <label for="answer1">第一张图片对应的成语典故是什么？: <!-- Set your question here --></label>
+        <input type="text" id="answer1" required>
+        <button type="button" onclick="checkAnswer(1)">Submit</button>
+    </div>
+
+    <div>
+        <label for="answer2">第二张图片对应的成语典故是什么？: <!-- Set your question here --></label>
+        <input type="text" id="answer2" required>
+        <button type="button" onclick="checkAnswer(2)">Submit</button>
+    </div>
+
+    <div>
+        <label for="answer3">第三张图片对应的成语典故是什么？: <!-- Set your question here --></label>
+        <input type="text" id="answer3" required>
+        <button type="button" onclick="checkAnswer(3)">Submit</button>
+    </div>
+
+    <div>
+        <label for="answer4">第四张图片对应的成语典故是什么？: <!-- Set your question here --></label>
+        <input type="text" id="answer4" required>
+        <button type="button" onclick="checkAnswer(4)">Submit</button>
+    </div>
+
+    <div>
+        <label for="answer5">第九张图片对应的成语典故是什么？: <!-- Set your question here --></label>
+        <input type="text" id="answer5" required>
+        <button type="button" onclick="checkAnswer(5)">Submit</button>
+    </div>
 </form>
 
-<div id="result"></div>
+<div id="results"></div>
 
 <script>
-function checkAnswer() {
-    var userAnswer = document.getElementById("answer").value.toLowerCase();
-    var correctAnswer = "paris";
+function checkAnswer(questionNumber) {
+    var userAnswer = document.getElementById("answer" + questionNumber).value.toLowerCase();
+    var correctAnswer = getCorrectAnswer(questionNumber);
 
     if (userAnswer === correctAnswer) {
-        document.getElementById("result").innerHTML = "Correct! The password is: <strong>12345</strong>";
+        document.getElementById("results").innerHTML += "Question " + questionNumber + " Correct! The password is: <strong>" + getPassword(questionNumber) + "</strong><br>";
     } else {
-        document.getElementById("result").innerHTML = "Incorrect. Try again!";
+        document.getElementById("results").innerHTML += "Question " + questionNumber + " Incorrect. Try again!<br>";
+    }
+}
+
+function getCorrectAnswer(questionNumber) {
+    // Return the correct answer based on the question number
+    switch (questionNumber) {
+        case 1:
+            return "1";
+        case 2:
+            return "2";
+        case 3:
+            return "3";
+        case 4:
+            return "4";
+        case 5:
+            return "5";
+        default:
+            return "";
+    }
+}
+
+function getPassword(questionNumber) {
+    // Return the password based on the question number
+    switch (questionNumber) {
+        case 1:
+            return "123";
+        case 2:
+            return "456";
+        case 3:
+            return "789";
+        case 4:
+            return "425";
+        case 5:
+            return "245";
+        default:
+            return "";
     }
 }
 </script>
